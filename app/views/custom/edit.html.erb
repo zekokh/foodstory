@@ -1,0 +1,41 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/custom">Список клиентов</a></li>
+        <li class="active"><a href="#about">Добавить новый заказ</a></li>
+        <li><a href="/statistics">Статистика</a></li>
+      </ul>
+
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="alert alert-success" role="alert">Заполните поля для добавления абонемента.</div>
+      <% if @customers.errors.any? %>
+          <div id="error_explanation">
+
+            <% @customers.errors.full_messages.each do |msg| %>
+                <div class="alert alert-warning" role="alert"><%= msg %></div>
+            <% end %>
+          </div>
+      <% end %>
+      <%= form_for @customers, url: custom_index_path do |form| %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Имя*", maxlength: 25 %>
+
+          <br/>
+          <%= form.submit 'Добавить', class: "btn btn-primary btn-lg" %> &nbsp; <%= link_to 'Отмена',custom_index_path, class: 'btn btn-default btn-lg', role: 'button' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

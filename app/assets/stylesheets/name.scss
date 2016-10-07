@@ -1,0 +1,42 @@
+// Place all the styles related to the name controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the custom controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background: white;
+  width: 100%;
+
+}
+
+.left {
+  text-align: center;
+  display: inline-block;
+  background: #1a0406;
+  height: 110px;
+  margin: 0px;
+  width: 100%;
+}
+.right {
+  text-align: center;
+  display: inline-block;
+  background: #f8a434;
+  height: 110px;
+  margin: 0px;
+  width: 100%;
+}
+.text {
+  font-size: 40pt;
+  color: white;
+}
+.block {
+  text-align: center;
+  display: block;
+  height: 110px;
+  margin: 0px;
+  padding-top: 12px;
+  color: black;
+  font-size: 40pt;
+  border-bottom: 1px solid black;
+}

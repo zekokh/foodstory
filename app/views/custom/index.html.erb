@@ -1,0 +1,72 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/custom">Список клиентов</a></li>
+        <li><a href="/custom/new">Добавить новый заказ</a></li>
+        <li><a href="/statistics">Статистика</a></li>
+      </ul>
+
+    </div>
+    <!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container">
+  <% if notice %>
+      <br/>
+
+      <div class="alert alert-info"> <%= notice %> </div>
+  <% end %>
+
+  <% if !@customers.blank? %>
+      <table class="table table-hover cell">
+        <thead>
+        <tr>
+          <th class="cell">Имя</th>
+          <th class="cell">Статус</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @customers.each do |custom| %>
+            <tr>
+              <td class="cell"><%= custom.name %></td>
+              <td class="cell">
+                <%= case custom.status
+                when 3
+                "Заказ на кухне"
+                when 2
+                "Заказ готов"
+                when 1
+                "Заказ выдан клиенту"
+                else
+                "Заказ удален!"
+                end %>
+              </td>
+              <td class="cell">
+                <% if custom.status == 2 %>
+                    <%= link_to 'заказ забрали', "/gave/#{custom.id}", class: 'btn btn-success btn-lg', role: 'button' %>
+                <% else %>
+                    <%= link_to 'заказ готов', "/ready/#{custom.id}", class: 'btn btn-success btn-lg', role: 'button' %>
+                <% end %>
+              </td>
+              <td class="cell">
+                <%= button_to 'отменить заказ', custom_path(custom), class: 'btn btn-danger btn-lg', method: :delete %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+  <% else %>
+      <div class="alert alert-info"> У Вас нет заказов!.</div>
+  <% end %>
+
+
+  </div> <!-- /container -->

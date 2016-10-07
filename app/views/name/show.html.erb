@@ -1,0 +1,40 @@
+<script>
+    function fresh() {
+        location.reload();
+    }
+    setInterval("fresh()",1200);
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="left">
+          <h3 class="text">ЗАКАЗ НА КУХНЕ</h3>
+        </div>
+        <% if !@custom.blank? %>
+            <% @custom.each do |custom| %>
+                <div class="block">
+                  <%= custom.name %>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <div class="right">
+          <h3 class="text">ВАШ ЗАКАЗ ГОТОВ</h3>
+        </div>
+        <% if !@redy.blank? %>
+            <% @redy.each do |custom| %>
+                <div class="block">
+                  <%= custom.name %>
+                </div>
+            <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
