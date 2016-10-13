@@ -1,6 +1,6 @@
 class CustomController < ApplicationController
   def index
-    @customers = Custom.where("status > 1").order(created_at: :desc)
+    @customers = Custom.where("status > 1").order(created_at: :asc)
   end
 
   def new
